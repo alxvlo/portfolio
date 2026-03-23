@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme {
+  --color-atari-bg: #0a0a0c;
+  --color-atari-panel: rgba(20, 20, 25, 0.7);
+  --color-atari-border: rgba(255, 255, 255, 0.1);
+  --color-atari-neon-cyan: #00f0ff;
+  --color-atari-neon-green: #39ff14;
+  --color-atari-neon-orange: #ff5e00;
+  --color-atari-neon-pink: #ff00ff;
+  --color-atari-text: #f0f0f0;
+  --color-atari-text-muted: #a0a0a5;
+  --color-atari-glow: rgba(0, 240, 255, 0.15);
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+@utility glass {
+  background: var(--color-atari-panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-atari-border);
+  border-radius: 1rem;
+}
+
+@utility text-glow {
+  text-shadow: 0 0 10px currentColor;
+}
+
+:root {
+  --background: var(--color-atari-bg);
+  --foreground: var(--color-atari-text);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--color-atari-bg);
+    --foreground: var(--color-atari-text);
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  background-image: radial-gradient(var(--color-atari-glow) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
