@@ -43,18 +43,32 @@ Simply open this file and replace the placeholder data with your own.
 
 ## 📦 Deployment (GitHub Pages)
 
-This project is pre-configured for static export, making it perfect for hosting on GitHub Pages.
+This project is pre-configured for static export and includes a GitHub Actions workflow that **automatically deploys your site every time you push to `main`** — no manual steps required after setup.
 
-The `next.config.ts` file includes:
-```ts
-output: 'export',
-images: {
-  unoptimized: true,
-}
-```
+### One-time setup
 
-To build for production:
+1. Push this repository to GitHub.
+2. Go to your repository → **Settings** → **Pages**.
+3. Under **Source**, select **GitHub Actions**.
+4. That's it! The next push to `main` will trigger a build and publish your site.
+
+Your site will be live at:
+- **User/org site** (repo named `<username>.github.io`): `https://<username>.github.io/`
+- **Project site** (any other repo name): `https://<username>.github.io/<repo-name>/`
+
+> **Project site note:** If your repo is **not** named `<username>.github.io`, add the following to `next.config.ts` so assets load correctly:
+> ```ts
+> basePath: '/<repo-name>',
+> assetPrefix: '/<repo-name>',
+> ```
+
+### Do I need to redeploy after updating the code?
+
+**No.** Every `git push` to `main` automatically triggers the workflow — it rebuilds and republishes your site. You can also trigger it manually from the **Actions** tab in your repository.
+
+### Manual local build
+
 ```bash
 npm run build
 ```
-This will generate an `out/` directory containing your static files.
+This generates an `out/` directory with your static files.
